@@ -1266,19 +1266,12 @@
     <span class="footer-privacy" onclick="openPrivacy()">Privacy Policy</span>
   </div>
 </footer>
+     <script>
 
- 
+const WEB3FORMS_KEY = "3f4a1ad0-83a0-4a6f-b96c-abe2cf062fdc"; // ← paste your key here
 
-
-
- <!-- ONLY SCRIPT PART MODIFIED BELOW — REST OF YOUR FILE IS SAME -->
-
-<script>
-
-const WORKER_URL = "https://bhargavpp2017.cloudflareaccess.com/cdn-cgi/access/certs";
-
-// RATE LIMIT
 const RATE_LIMIT = { max: 3, windowMs: 10 * 60 * 1000 };
+
 function checkRateLimit() {
   const now = Date.now();
   const stored = JSON.parse(sessionStorage.getItem('_bp_rl') || '[]');
@@ -1289,77 +1282,77 @@ function checkRateLimit() {
   return true;
 }
 
-// SANITISE
 function sanitise(str) {
   const div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML.trim();
 }
 
-// ✅ FINAL SEND MESSAGE (CLOUDFLARE)
 async function sendMessage(e) {
   e.preventDefault();
 
-  const btn = document.getElementById('sendBtn');
+  const btn    = document.getElementById('sendBtn');
   const status = document.getElementById('formStatus');
 
-  status.className = 'form-status';
+  status.className    = 'form-status';
   status.style.display = 'none';
 
-  // Honeypot
+  // Honeypot check
   if (document.getElementById('honeypot').value) {
     status.textContent = '✓ Message sent!';
-    status.className = 'form-status success';
+    status.className   = 'form-status success';
     return;
   }
 
-  // Rate limit
+  // Rate limit check
   if (!checkRateLimit()) {
-    status.textContent = '⚠ Too many submissions. Try again later.';
-    status.className = 'form-status error';
+    status.textContent = '⚠ Too many submissions. Please try again later.';
+    status.className   = 'form-status error';
     return;
   }
 
-  const data = {
-    name: sanitise(document.getElementById('msg_name').value),
-    email: sanitise(document.getElementById('msg_email').value),
-    subject: sanitise(document.getElementById('msg_subject').value),
-    message: sanitise(document.getElementById('msg_body').value),
-    type: sanitise(document.getElementById('msg_type').value)
-  };
-
-  btn.disabled = true;
+  btn.disabled    = true;
   btn.textContent = 'Sending…';
 
+  const payload = {
+    access_key:   WEB3FORMS_KEY,
+    subject:      sanitise(document.getElementById('msg_subject').value),
+    name:         sanitise(document.getElementById('msg_name').value),
+    email:        sanitise(document.getElementById('msg_email').value),
+    enquiry_type: sanitise(document.getElementById('msg_type').value),
+    message:      sanitise(document.getElementById('msg_body').value),
+    botcheck:     ""   // Web3Forms' own honeypot field
+  };
+
   try {
-    const res = await fetch(WORKER_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
+    const res  = await fetch("https://api.web3forms.com/submit", {
+      method:  "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body:    JSON.stringify(payload)
     });
+    const data = await res.json();
 
-    if (!res.ok) throw new Error();
-
-    status.textContent = '✓ Message sent! I’ll get back to you.';
-    status.className = 'form-status success';
-
-    document.getElementById('contactForm').reset();
+    if (data.success) {
+      status.textContent = "✓ Message sent! I'll get back to you within one business day.";
+      status.className   = 'form-status success';
+      document.getElementById('contactForm').reset();
+    } else {
+      throw new Error(data.message || 'Submission rejected');
+    }
 
   } catch (err) {
-    status.textContent = '✗ Failed to send. Email me directly.';
-    status.className = 'form-status error';
+    status.textContent = '✗ Could not send. Please email me directly.';
+    status.className   = 'form-status error';
   }
 
-  btn.disabled = false;
+  btn.disabled    = false;
   btn.textContent = 'Send message →';
 }
 
-// VISITOR COUNTER (unchanged)
+// Visitor counter
 (async function loadVisitorCount() {
   try {
-    const NAMESPACE = 'bhargavpp.portfolio';
-    const KEY = 'visitors';
-    const res = await fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`);
+    const res  = await fetch('https://api.countapi.xyz/hit/bhargavpp.portfolio/visitors');
     const data = await res.json();
     document.getElementById('visitorCount').textContent =
       Number(data.value).toLocaleString() + ' visitors';
@@ -1369,19 +1362,17 @@ async function sendMessage(e) {
   }
 })();
 
-// PRIVACY MODAL (unchanged)
+// Privacy modal
 function openPrivacy() {
-  const modal = document.getElementById('privacyModal');
-  modal.classList.add('open');
+  document.getElementById('privacyModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closePrivacy() {
-  const modal = document.getElementById('privacyModal');
-  modal.classList.remove('open');
+  document.getElementById('privacyModal').classList.remove('open');
   document.body.style.overflow = '';
 }
 
-// SMOOTH SCROLL
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
     e.preventDefault();
@@ -1390,40 +1381,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// SCROLL ANIMATION
+// Scroll-in animation
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      e.target.style.opacity = '1';
+      e.target.style.opacity   = '1';
       e.target.style.transform = 'translateY(0)';
     }
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.exp-item, .skill-card, .project-card, .achievement-card, .edu-card').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(16px)';
+document.querySelectorAll(
+  '.exp-item, .skill-card, .project-card, .achievement-card, .edu-card'
+).forEach(el => {
+  el.style.opacity    = '0';
+  el.style.transform  = 'translateY(16px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
 });
 
-// SECURITY: external links
+// Security: noopener on external links
 document.querySelectorAll('a[target="_blank"]').forEach(a => {
   a.setAttribute('rel', 'noopener noreferrer');
 });
 
-// CSRF TOKEN
+// CSRF token injection
 (function injectCsrfToken() {
   let token = sessionStorage.getItem('_bp_csrf');
   if (!token) {
     token = crypto.randomUUID();
     sessionStorage.setItem('_bp_csrf', token);
   }
-  const field = document.createElement('input');
-  field.type = 'hidden';
-  field.name = 'csrf_token';
-  field.value = token;
-  const form = document.getElementById('contactForm');
+  const field  = document.createElement('input');
+  field.type   = 'hidden';
+  field.name   = 'csrf_token';
+  field.value  = token;
+  const form   = document.getElementById('contactForm');
   if (form) form.appendChild(field);
 })();
 
