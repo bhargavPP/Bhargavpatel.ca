@@ -13,6 +13,16 @@
 <meta name="twitter:card" content="summary">
 <title>Bhargav Patel — Full Stack .NET Developer</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231a4c8c'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='18' font-weight='bold' fill='white'>BP</text></svg>">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K9N70G45T2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K9N70G45T2');
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -63,25 +73,6 @@
     color: var(--ink-soft); transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent); }
-
-  /* ── VISITOR BADGE ── */
-  .visitor-badge {
-    display: flex; align-items: center; gap: 0.5rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem; color: var(--ink-muted);
-    padding: 0.3rem 0.75rem;
-    border: 1px solid var(--rule);
-    background: var(--paper-card);
-    letter-spacing: 0.05em;
-  }
-  .visitor-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: #10b981; flex-shrink: 0;
-    animation: pulse-dot 2s infinite;
-  }
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
-  }
 
   /* ── HERO ── */
   .hero {
@@ -387,8 +378,7 @@
   .form-status.success { background: #e6f9f0; color: #0a6640; border: 1px solid #b7e8d0; display: block; }
   .form-status.error   { background: #fce8e8; color: #9b1c1c; border: 1px solid #f5b7b7; display: block; }
   .privacy-note {
-    font-size: 0.75rem; color: var(--ink-muted);
-    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; color: var(--ink-muted); font-family: 'DM Mono', monospace;
   }
   .privacy-note a { color: var(--accent); cursor: pointer; text-decoration: underline; }
 
@@ -520,8 +510,6 @@
     animation: bp-pulse-dot 2s infinite;
   }
   @keyframes bp-pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-  /* Setup overlay */
   #bp-api-setup {
     position: absolute; inset: 0; background: #f8f5f0;
     display: flex; flex-direction: column; padding: 1.5rem; z-index: 10;
@@ -559,8 +547,6 @@
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem; color: #aaa; margin-top: 0.75rem; line-height: 1.6;
   }
-
-  /* Suggestions */
   #bp-suggestions {
     padding: 0.875rem 1rem 0; flex-shrink: 0;
     border-bottom: 1px solid #d8d0c4; background: #efe9df;
@@ -577,8 +563,6 @@
     transition: background 0.15s, border-color 0.15s, transform 0.1s; line-height: 1.3;
   }
   .bp-chip:hover { background: #e8f0fb; border-color: #1a4c8c; transform: translateY(-1px); }
-
-  /* Messages */
   #bp-chat-messages {
     flex: 1; overflow-y: auto; padding: 1rem;
     display: flex; flex-direction: column; gap: 0.75rem; scroll-behavior: smooth;
@@ -615,8 +599,6 @@
   @keyframes bp-typing {
     0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-5px); }
   }
-
-  /* Input */
   #bp-chat-footer {
     border-top: 1px solid #d8d0c4; padding: 0.75rem 1rem;
     display: flex; gap: 0.5rem; align-items: flex-end;
@@ -685,7 +667,7 @@
         <li>Your name and email address</li>
         <li>The subject and message content you provide</li>
       </ul>
-      <p>This site does not use cookies, analytics, or tracking of any kind. No personal data is stored on any server I control.</p>
+      <p>This site does not use tracking cookies. Anonymous visit data is collected via Google Analytics to help me understand how many people visit the site. No personal information is linked to this data.</p>
 
       <h3>AI Chat Widget</h3>
       <p>The chat widget uses the Groq API to answer questions about my portfolio. If you choose to use it, you will provide your own Groq API key, which is stored only in your browser's localStorage and is never sent to any server I control — only directly to api.groq.com. I do not log, store, or have access to your API key or chat messages.</p>
@@ -696,6 +678,7 @@
       <h3>Third-party services</h3>
       <ul>
         <li><strong>Google Fonts</strong> — fonts loaded from Google's CDN</li>
+        <li><strong>Google Analytics</strong> — anonymous visitor statistics</li>
         <li><strong>Web3Forms</strong> — contact form delivery service</li>
         <li><strong>Groq</strong> — AI chat responses (your key, your data)</li>
         <li><strong>GitHub</strong> — project links to public repositories</li>
@@ -746,11 +729,6 @@
     <div class="hero-actions">
       <a class="btn-primary" href="#message">Send a message</a>
       <a class="btn-outline" href="https://github.com/BhargavPP" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </div>
-    <!-- Visitor counter via hits.sh (free, no signup needed) -->
-    <div style="margin-top:1.5rem;">
-      <img src="https://hits.sh/bhargavpp.github.io.svg?style=flat&label=visitors&color=1a4c8c&labelColor=f8f5f0"
-           alt="Visitor count" style="height:22px;">
     </div>
   </div>
 
@@ -998,7 +976,9 @@
         <div class="project-mockup">
           <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#0f1117;">
             <rect width="320" height="28" fill="#1a1f2e"/>
-            <circle cx="14" cy="14" r="4" fill="#ff5f57"/><circle cx="26" cy="14" r="4" fill="#febc2e"/><circle cx="38" cy="14" r="4" fill="#28c840"/>
+            <circle cx="14" cy="14" r="4" fill="#ff5f57"/>
+            <circle cx="26" cy="14" r="4" fill="#febc2e"/>
+            <circle cx="38" cy="14" r="4" fill="#28c840"/>
             <rect x="60" y="8" width="160" height="12" rx="3" fill="#252b3b"/>
             <text x="140" y="18" font-size="7" fill="#6b7280" font-family="monospace" text-anchor="middle">localhost:5000/swagger</text>
             <rect y="28" width="320" height="22" fill="#1f2937"/>
@@ -1130,6 +1110,9 @@
             <text x="30" y="36" font-size="6.5" fill="#c084fc" font-family="monospace">:root {</text>
             <text x="30" y="48" font-size="6.5" fill="#60a5fa" font-family="monospace">  --color-primary: </text>
             <text x="150" y="48" font-size="6.5" fill="#fb923c" font-family="monospace">#1a4c8c</text>
+            <text x="30" y="60" font-size="6.5" fill="#60a5fa" font-family="monospace">  --spacing-md: </text>
+            <text x="140" y="60" font-size="6.5" fill="#fb923c" font-family="monospace">1.5rem</text>
+            <text x="30" y="72" font-size="6.5" fill="#e2e8f0" font-family="monospace">}</text>
             <text x="30" y="96" font-size="6.5" fill="#c084fc" font-family="monospace">.card {</text>
             <text x="30" y="108" font-size="6.5" fill="#60a5fa" font-family="monospace">  display: </text>
             <text x="100" y="108" font-size="6.5" fill="#fb923c" font-family="monospace">grid</text>
@@ -1250,7 +1233,6 @@
           </a>
         </div>
       </div>
-
       <div>
         <form class="message-form" id="contactForm" onsubmit="sendMessage(event)">
           <div class="form-row">
@@ -1339,13 +1321,10 @@
   </div>
 </footer>
 
-<!-- ══════════════════════════════════════════════
-     CHAT WIDGET HTML
-══════════════════════════════════════════════ -->
+<!-- ── CHAT WIDGET ── -->
 <div id="bp-chat-fab">
   <div id="bp-chat-window" role="dialog" aria-label="Chat with Bhargav's AI assistant">
 
-    <!-- API Key Setup Overlay -->
     <div id="bp-api-setup">
       <h3>Ask me anything about Bhargav</h3>
       <p>This AI assistant knows Bhargav's full career, skills, and projects. Enter your free Groq API key to start — it stays in your browser only.</p>
@@ -1353,7 +1332,7 @@
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         </svg>
-        Key stored in your browser only — never sent to any server except Groq
+        Key stored in your browser only — never sent anywhere except Groq
       </div>
       <input type="password" id="bp-api-key-input" placeholder="gsk_..." autocomplete="off" spellcheck="false">
       <button id="bp-api-key-save" onclick="bpSaveKey()">Start chatting →</button>
@@ -1361,11 +1340,10 @@
         Get a 100% free key at
         <a href="https://console.groq.com" target="_blank" rel="noopener noreferrer">console.groq.com</a>
         — no credit card needed.<br><br>
-        Free tier: 6,000 requests/day · Model: Llama 3.1 8B Instant
+        Free tier: 6,000 requests/day · Llama 3.1 8B
       </p>
     </div>
 
-    <!-- Header -->
     <div id="bp-chat-header">
       <div class="bp-chat-avatar">BP</div>
       <div>
@@ -1377,7 +1355,6 @@
       </div>
     </div>
 
-    <!-- Suggested Questions -->
     <div id="bp-suggestions">
       <div class="bp-suggestions-label">Quick questions</div>
       <div class="bp-suggestions-list">
@@ -1390,7 +1367,6 @@
       </div>
     </div>
 
-    <!-- Messages -->
     <div id="bp-chat-messages">
       <div class="bp-msg bot">
         <div class="bp-msg-avatar">BP</div>
@@ -1400,7 +1376,6 @@
       </div>
     </div>
 
-    <!-- Input -->
     <div id="bp-chat-footer">
       <textarea
         id="bp-chat-input"
@@ -1420,7 +1395,6 @@
     <div class="bp-disclaimer">Powered by Groq · Llama 3.1 · Free tier</div>
   </div>
 
-  <!-- FAB Button -->
   <button id="bp-chat-btn" onclick="bpToggleChat()" aria-label="Chat with Bhargav's AI">
     <span id="bp-chat-unread"></span>
     <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1433,25 +1407,15 @@
   </button>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     ALL SCRIPTS
-══════════════════════════════════════════════ -->
+<!-- ── ALL SCRIPTS ── -->
 <script>
-// ═══════════════════════════════════════════════════════
-// ▼▼▼  ONLY LINE YOU NEED TO CHANGE  ▼▼▼
-// Paste your Groq API key here (get it free at console.groq.com)
-// If you leave it empty, visitors will be asked to enter their own key
-const GROQ_API_KEY = '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';   // e.g. 'gsk_xxxxxxxxxxxxxxxxxxxx'
-// ▲▲▲  ONLY LINE YOU NEED TO CHANGE  ▲▲▲
-// ═══════════════════════════════════════════════════════
 
-// ── WEB3FORMS KEY (for contact form) ──
-// Get your free key at https://web3forms.com
+ 
+const GROQ_API_KEY = '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';  // e.g. 'gsk_xxxxxxxxxxxx'
+ 
+ 
 const WEB3FORMS_KEY = '3f4a1ad0-83a0-4a6f-b96c-abe2cf062fdc';
-
-// ════════════════════════════════════════
-// CONTACT FORM
-// ════════════════════════════════════════
+ 
 const RATE_LIMIT = { max: 3, windowMs: 10 * 60 * 1000 };
 
 function checkRateLimit() {
@@ -1512,6 +1476,13 @@ async function sendMessage(e) {
       status.textContent = "✓ Message sent! I'll get back to you within one business day.";
       status.className   = 'form-status success';
       document.getElementById('contactForm').reset();
+      // Track form submission in Google Analytics
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'contact_form_submit', {
+          event_category: 'engagement',
+          event_label: sanitise(document.getElementById('msg_type').value)
+        });
+      }
     } else {
       throw new Error(data.message || 'Rejected');
     }
@@ -1535,7 +1506,6 @@ function closePrivacy() {
   document.getElementById('privacyModal').classList.remove('open');
   document.body.style.overflow = '';
 }
-// Close modal on backdrop click
 document.getElementById('privacyModal').addEventListener('click', function(e) {
   if (e.target === this) closePrivacy();
 });
@@ -1548,6 +1518,13 @@ const observer = new IntersectionObserver((entries) => {
     if (e.isIntersecting) {
       e.target.style.opacity   = '1';
       e.target.style.transform = 'translateY(0)';
+      // Track section views in Google Analytics
+      if (typeof gtag !== 'undefined' && e.target.dataset.section) {
+        gtag('event', 'section_view', {
+          event_category: 'engagement',
+          event_label: e.target.dataset.section
+        });
+      }
     }
   });
 }, { threshold: 0.1 });
@@ -1561,8 +1538,14 @@ document.querySelectorAll(
   observer.observe(el);
 });
 
+// Track section headings
+document.querySelectorAll('section[id]').forEach(sec => {
+  sec.dataset.section = sec.id;
+  observer.observe(sec);
+});
+
 // ════════════════════════════════════════
-// SECURITY: noopener on all external links
+// SECURITY
 // ════════════════════════════════════════
 document.querySelectorAll('a[target="_blank"]').forEach(a => {
   a.setAttribute('rel', 'noopener noreferrer');
@@ -1577,6 +1560,18 @@ document.querySelectorAll('a[target="_blank"]').forEach(a => {
   const form   = document.getElementById('contactForm');
   if (form) form.appendChild(field);
 })();
+
+// Track project card clicks in GA
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('click', () => {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'project_click', {
+        event_category: 'engagement',
+        event_label: card.href
+      });
+    }
+  });
+});
 
 // ════════════════════════════════════════
 // GROQ AI CHAT WIDGET
@@ -1666,11 +1661,9 @@ Total: 29 public repositories
   let history = [];
   let apiKey  = '';
 
-  // ── INIT ──
   function init() {
     apiKey = GROQ_API_KEY || localStorage.getItem('bp_groq_key') || '';
     if (apiKey) hideSetup();
-
     setTimeout(() => {
       if (!isOpen) {
         const dot = document.getElementById('bp-chat-unread');
@@ -1684,7 +1677,6 @@ Total: 29 public repositories
     if (el) el.style.display = 'none';
   }
 
-  // ── SAVE KEY ──
   window.bpSaveKey = function () {
     const input = document.getElementById('bp-api-key-input');
     const val   = (input.value || '').trim();
@@ -1702,7 +1694,6 @@ Total: 29 public repositories
     hideSetup();
   };
 
-  // ── TOGGLE ──
   window.bpToggleChat = function () {
     isOpen = !isOpen;
     document.getElementById('bp-chat-window').classList.toggle('open', isOpen);
@@ -1714,10 +1705,13 @@ Total: 29 public repositories
         const inp = document.getElementById('bp-chat-input');
         if (inp) inp.focus();
       }, 250);
+      // Track chat opens in GA
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'chat_opened', { event_category: 'engagement' });
+      }
     }
   };
 
-  // ── HELPERS ──
   window.bpAsk = function (text) {
     const inp = document.getElementById('bp-chat-input');
     if (inp) inp.value = text;
@@ -1736,7 +1730,6 @@ Total: 29 public repositories
     el.style.height = Math.min(el.scrollHeight, 100) + 'px';
   };
 
-  // ── SEND MESSAGE ──
   window.bpSendMessage = async function () {
     if (isBusy) return;
     if (!apiKey) {
@@ -1751,7 +1744,6 @@ Total: 29 public repositories
 
     inputEl.value        = '';
     inputEl.style.height = 'auto';
-
     appendMsg('user', text);
     history.push({ role: 'user', content: text });
 
@@ -1783,24 +1775,25 @@ Total: 29 public repositories
       if (!res.ok) {
         removeTyping(typingEl);
         if (res.status === 401) {
-          appendMsg('bot', '⚠ Invalid API key. Please click the chat button, then re-enter your Groq key.');
+          appendMsg('bot', '⚠ Invalid API key. Click the chat button to re-enter your Groq key.');
           localStorage.removeItem('bp_groq_key');
           apiKey = '';
         } else {
-          const errMsg = data?.error?.message || 'Request failed';
-          appendMsg('bot', `⚠ Error: ${errMsg}`);
+          appendMsg('bot', `⚠ Error: ${data?.error?.message || 'Request failed'}`);
         }
         return;
       }
 
-      const reply = data.choices?.[0]?.message?.content
-        || "Sorry, I couldn't generate a response.";
-
+      const reply = data.choices?.[0]?.message?.content || "Sorry, I couldn't generate a response.";
       history.push({ role: 'assistant', content: reply });
       removeTyping(typingEl);
       appendMsg('bot', reply);
 
-      // Cap history to last 20 messages to save tokens
+      // Track chat message in GA
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'chat_message_sent', { event_category: 'engagement' });
+      }
+
       if (history.length > 20) history = history.slice(-20);
 
     } catch (err) {
@@ -1814,47 +1807,40 @@ Total: 29 public repositories
     }
   };
 
-  // ── DOM HELPERS ──
   function appendMsg(role, text) {
-    const container = document.getElementById('bp-chat-messages');
-    const wrap      = document.createElement('div');
-    wrap.className  = `bp-msg ${role}`;
-
+    const container      = document.getElementById('bp-chat-messages');
+    const wrap           = document.createElement('div');
+    wrap.className       = `bp-msg ${role}`;
     const avatar         = document.createElement('div');
     avatar.className     = 'bp-msg-avatar';
     avatar.textContent   = role === 'bot' ? 'BP' : 'You';
-
     const bubble         = document.createElement('div');
     bubble.className     = 'bp-msg-bubble';
     bubble.innerHTML     = formatText(text);
-
     wrap.appendChild(avatar);
     wrap.appendChild(bubble);
     container.appendChild(wrap);
-    container.scrollTop = container.scrollHeight;
+    container.scrollTop  = container.scrollHeight;
   }
 
   function showTyping() {
-    const container = document.getElementById('bp-chat-messages');
-    const wrap      = document.createElement('div');
-    wrap.className  = 'bp-msg bot';
-    wrap.id         = 'bp-typing-indicator';
-
-    const avatar       = document.createElement('div');
-    avatar.className   = 'bp-msg-avatar';
-    avatar.textContent = 'BP';
-
-    const bubble     = document.createElement('div');
-    bubble.className = 'bp-typing-bubble';
-    bubble.innerHTML =
+    const container      = document.getElementById('bp-chat-messages');
+    const wrap           = document.createElement('div');
+    wrap.className       = 'bp-msg bot';
+    wrap.id              = 'bp-typing-indicator';
+    const avatar         = document.createElement('div');
+    avatar.className     = 'bp-msg-avatar';
+    avatar.textContent   = 'BP';
+    const bubble         = document.createElement('div');
+    bubble.className     = 'bp-typing-bubble';
+    bubble.innerHTML     =
       '<span class="bp-typing-dot"></span>' +
       '<span class="bp-typing-dot"></span>' +
       '<span class="bp-typing-dot"></span>';
-
     wrap.appendChild(avatar);
     wrap.appendChild(bubble);
     container.appendChild(wrap);
-    container.scrollTop = container.scrollHeight;
+    container.scrollTop  = container.scrollHeight;
     return wrap;
   }
 
@@ -1864,23 +1850,22 @@ Total: 29 public repositories
 
   function formatText(raw) {
     return raw
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
+      .replace(/&/g,  '&amp;')
+      .replace(/</g,  '&lt;')
+      .replace(/>/g,  '&gt;')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\*(.*?)\*/g,     '<em>$1</em>')
       .replace(/(https?:\/\/[^\s<]+)/g,
         '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>')
       .replace(/^[-•]\s(.+)$/gm, '<li>$1</li>')
       .replace(/(<li>[\s\S]*?<\/li>)/g,
         '<ul style="padding-left:1.1rem;margin:0.3rem 0">$1</ul>')
       .replace(/\n\n+/g, '</p><p style="margin:0.4rem 0 0">')
-      .replace(/\n/g, '<br>')
-      .replace(/^/, '<p style="margin:0">')
-      .replace(/$/, '</p>');
+      .replace(/\n/g,    '<br>')
+      .replace(/^/,      '<p style="margin:0">')
+      .replace(/$/,      '</p>');
   }
 
-  // ── BOOT ──
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
@@ -1889,6 +1874,5 @@ Total: 29 public repositories
 
 })();
 </script>
-
 </body>
 </html>
